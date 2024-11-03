@@ -9,8 +9,8 @@ Uzun ya da kısa fark etmeksizin herhangi bir PDF dokümanını saniyeler içind
 Kullanıcı dostu arayüzümüz ile öğrenciler dijital içerikleri kolayca yönetebilir, istedikleri materyalleri diledikleri zaman tekrar gözden geçirebilirler. Hem web hem de mobil uygulama olarak erişilebilen ANKA ile eğitimde yeni bir deneyim sunuyoruz. Bilgiye ulaşımı kolaylaştırıyor ve öğrenmeyi daha anlaşılır bir hale getiriyoruz.
 
 <p align="center">
-  <img src="images/anka_mobile_home_light.png" alt="Logo 1" width="200" height="200" style="margin-right: 20px;">
-  <img src="images/anka_mobile_home.png" alt="Logo 2" width="200" height="200">
+  <img src="images/anka_mobile_home_light.png" alt="Logo 1" width="200" height="400" style="margin-right: 50px;">
+  <img src="images/anka_mobile_home.png" alt="Logo 2" width="200" height="400">
 </p>
 
 ## Özellikler
