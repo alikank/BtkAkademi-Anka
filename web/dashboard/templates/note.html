@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+{% block baslik %}Not Çıkar{% endblock baslik %}
+
+{% block main %}
+
+<main class="main-wrapper">
+  <div class="main-content">
+    
+          <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">BtkAkademi Anka</div>
+            <div class="ps-3">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                  <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Not Çıkar / Zihin Haritası Oluştur</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+    <div class="card rounded-4" style="height: 35vh; padding-bottom: 20px;">
+      <div class="card-body">
+        <h5 class="mb-3 fw-bold">Başlık Girin :</h5>
+        <form method="POST" action="{% url 'call_gemini_web' %}" id="mermaid-form">
+          {% csrf_token %}
+          <textarea name="prompt" class="form-control mb-3" rows="4" placeholder="Not çıkarmak istediğiniz konu başlığını girin, örnek : Cumhuriyetin İlanı"></textarea>
+          <button type="submit" class="btn btn-primary">
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" style="display: none;"></span>
+            Not Çıkar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card rounded-4 mt-3">
+      <div class="card-body">
+        <h5 class="mb-3 fw-bold">Çıkan Notlar:</h5>
+        <div class="mermaid-wrapper" style="display: flex; justify-content: center;">
+          <div id="error-message" class="text-danger" style="display: none;"></div>
+          <div id="mermaid-container" class="mermaid-container" style="width: 100%; max-width: 90%; margin: 0 auto;">
+          </div>
+        </div>
+        <button id="save-button" class="btn btn-success mt-3" style="display: none;">Kaydet</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.3.0/mermaid.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose', flowchart: { useMaxWidth: true } });
+  
+    const form = document.getElementById('mermaid-form');
+    const mermaidContainer = document.getElementById('mermaid-container');
+    const errorMessage = document.getElementById('error-message');
+    const saveButton = document.getElementById('save-button');
+    const button = form.querySelector('button');
+    const spinner = button.querySelector('.spinner-grow'); // Spinner elementini tanımladık
+    let mermaidCode = "";
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      button.disabled = true;
+      spinner.style.display = "inline-block"; // Spinner görünür
+      button.childNodes[2].textContent = " Yükleniyor..."; // Buton metnini güncelle
+      
+      try {
+        const formData = new FormData(form);
+        const response = await fetch("{% url 'call_gemini_web' %}", {
+          method: 'POST',
+          body: formData,
+          headers: { 'X-CSRFToken': formData.get('csrfmiddlewaretoken') },
+          credentials: 'same-origin'
+        });
+  
+        const data = await response.json();
+        if (!response.ok || data.error) {
+          throw new Error(data.error || 'Bir hata oluştu.');
+        }
+        mermaidCode = data.mermaid_code.trim();
+        mermaidContainer.innerHTML = '';
+        errorMessage.style.display = "none";
+        const diagramDiv = document.createElement('div');
+        diagramDiv.className = 'mermaid';
+        diagramDiv.textContent = data.mermaid_code.trim();
+        mermaidContainer.appendChild(diagramDiv);
+        saveButton.style.display = "block";
+  
+        await mermaid.run({ nodes: [diagramDiv] });
+      } catch (error) {
+        mermaidContainer.innerHTML = '';
+        errorMessage.textContent = `Hata: ${error.message}`;
+        errorMessage.style.display = "block";
+      } finally {
+        spinner.style.display = "none"; // Spinner'ı gizle
+        button.childNodes[2].textContent = " Not Çıkar"; // Buton metnini eski haline döndür
+        button.disabled = false;
+      }
+    });
+  
+    saveButton.addEventListener('click', async function() {   
+      const promptText = form.querySelector('textarea[name="prompt"]').value;
+  
+      try {
+        const saveResponse = await fetch("{% url 'save_mermaid_code' %}", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+          },
+          body: JSON.stringify({ mermaid_code: mermaidCode, prompt_text: promptText })
+        });
+  
+        if (!saveResponse.ok) {
+          throw new Error('Kaydetme işlemi başarısız oldu.');
+        }
+  
+        alert("Mermaid kodu başarıyla kaydedildi.");
+        saveButton.style.display = "none";
+  
+      } catch (error) {
+        alert(`Hata: ${error.message}`);
+      }
+    });
+  });
+</script>
+{% endblock main %}

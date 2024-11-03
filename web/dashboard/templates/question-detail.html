@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block baslik %}Soru Detayı{% endblock baslik %}
+{% block ek_css %}
+<style>
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .card img {
+        border-radius: 15px 15px 0 0;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+    }
+</style>
+{% endblock ek_css %}
+
+{% block main %}
+<!--start main wrapper-->
+<main class="main-wrapper">
+    <div class="main-content">
+      <!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">BtkAkademi Anka</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Soru Detayı</li>
+							</ol>
+						</nav>
+					</div>
+					
+				</div>
+				<!--end breadcrumb-->
+      
+                <div class="container mt-5">
+                    <div class="row justify-content-between mb-4">
+                        <div class="col-12 text-end">
+                            <a href="{% url 'questions_page' %}" class="btn btn-danger btn-sm">
+                                <i class="bi bi-file-earmark-pdf me-2"></i>Sorulara geri dön
+                            </a>
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                {% if question %}
+                                    <div class="card-body">
+                                        <h4 class="card-subtitle mb-2 text-muted">Soru:</h4>
+                                        <img src="{{ question.image.url }}" class="img-fluid" alt="Soru Resmi" style="max-height: 300px; object-fit: cover;">
+                                        <h4 class="card-subtitle mb-2 text-muted mt-3">Çözüm:</h4>
+                                        <p style="font-size: 1rem;">{{ question.gemini_response|safe }}</p>
+                                    </div>
+                                {% else %}
+                                    <div class="card-body">
+                                        <p style="font-size: 1rem;">Soru Çözümü Bulunamadı</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            <!--end main wrapper-->
+          
+              <!--start overlay-->
+              <div class="overlay btn-toggle"></div>
+              <!--end overlay-->
+           <!--start footer-->
+           <footer class="page-footer">
+            <p class="mb-0">Copyright © 2024. All right reserved.</p>
+          </footer>
+          <!--top footer-->  
+             
+
+    </div>
+  </main>
+  <!--end main wrapper-->
+
+{% endblock main %}

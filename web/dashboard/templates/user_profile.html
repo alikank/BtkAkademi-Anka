@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+{% block baslik %}Profil Bilgisi{% endblock baslik %}
+
+{% block main %}
+<!--start main wrapper-->
+<main class="main-wrapper">
+    <div class="main-content">
+      <!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">BtkAkademi Anka</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Öğrenci Profili</li>
+							</ol>
+						</nav>
+					</div>
+					
+				</div>
+				<!--end breadcrumb-->
+      
+
+        <div class="card rounded-4">
+          <div class="card-body p-4">
+             <div class="position-relative mb-5">
+             <!-- <img src="assets/images/gallery/profile-cover.png" class="img-fluid rounded-4 shadow" alt="">-->
+              <div class="profile-avatar position-absolute top-100 start-50 translate-middle">
+                <img src="{% static 'images/avatars/tik.jpg' %}" class="img-fluid rounded-circle p-1 bg-grd-danger shadow" width="170" height="170" alt="">
+              </div>
+             </div>
+              <div class="profile-info pt-5 d-flex align-items-center justify-content-between">
+                <div class="">
+                  <h3>{{ student.student_namesurname}}</h3>
+                  <p class="mb-0">{{student.student_school}}<br>
+                   {{ student.student_email }}</p>
+                </div>
+                
+              </div>
+              <div class="kewords d-flex align-items-center gap-3 mt-4 overflow-x-auto">
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+           <!-- <div class="col-12 col-xl-8">
+            <div class="card rounded-4 border-top border-4 border-primary border-gradient-1">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+
+                  
+                  <div class="">
+                    <h5 class="mb-0 fw-bold">Şifre Değiştir</h5>
+                  </div>
+                  
+                 </div>
+                 <form class="row g-4">
+									<div class="col-md-6">
+										<label for="input1" class="form-label">Eski Şifre :</label>
+										<input type="password" class="form-control" id="input1">
+									</div>
+									
+									<div class="col-md-12">
+										<label for="input5" class="form-label">Yeni Şifre : </label>
+										<input type="password" class="form-control" id="input5">
+									</div>
+
+									<div class="col-md-12">
+										<label for="input5" class="form-label">(TEKRAR) Yeni Şifre : </label>
+										<input type="password" class="form-control" id="input6">
+									</div>
+									
+									
+								
+									
+									<div class="col-md-12">
+										<div class="d-md-flex d-grid align-items-center gap-3">
+                                            <button type="button" class="btn btn-grd-primary px-4">
+                                                <p style="color: white; margin: 0; padding: 0;">Şifreyi Değiştir</p>
+                                            </button>
+										</div>
+									</div>
+								</form>
+							</div>
+            </div>
+           </div>  -->
+           <div class="col-12 col-xl-4">
+            <div class="card rounded-4">
+              <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                  <div class="">
+                    <h5 class="mb-0 fw-bold">Bilgiler</h5>
+                  </div>
+                 
+                 </div>
+                 <div class="full-info">
+                  <div class="info-list d-flex flex-column gap-3">
+                    <div class="info-list-item d-flex align-items-center gap-3"><span class="material-icons-outlined">account_circle</span><p class="mb-0">Ad Soyad: {{ student.student_namesurname}}</p></div>
+                    <div class="info-list-item d-flex align-items-center gap-3"><span class="material-icons-outlined">done</span><p class="mb-0">Doğum Tarihi: {{student.student_birthday}}</p></div>
+                    <div class="info-list-item d-flex align-items-center gap-3"><span class="material-icons-outlined">code</span><p class="mb-0">Okul: {{student.student_school}}</p></div>
+                    <div class="info-list-item d-flex align-items-center gap-3"><span class="material-icons-outlined">flag</span><p class="mb-0">Öğrenci Email: {{student.student_email}}</p></div>
+                    <!-- <div class="info-list-item d-flex align-items-center gap-3"><span class="material-icons-outlined">language</span><p class="mb-0">Email: jhon.xyz</p></div>
+                    <div class="info-list-item d-flex align-items-center gap-3"><span class="material-icons-outlined">call</span><p class="mb-0">Phone: (124) 895-6724</p></div> -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+
+
+              </div>
+            </div>
+
+           </div>
+        </div><!--end row-->
+       
+
+
+    </div>
+  </main>
+  <!--end main wrapper-->
+
+{% endblock main %}

@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+{% block baslik %}Anasayfa{% endblock baslik %}
+
+{% block main %}
+<!--start main wrapper-->
+<main class="main-wrapper">
+    <div class="main-content">
+      <!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">BtkAkademi Anka</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Anasayfa</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+      
+          
+                <div class="col">
+                    <div class="card">
+                      <div class="card-body p-4">
+                        <h3 class="">Yapay Zeka Destekli Öğrenci Platformu</h3><br>
+                        <p>Platformumuz, yapay zeka gücünü eğitimle buluşturarak öğrencilerin her konuda daha verimli öğrenmelerini sağlıyor. Gemini ile tamamen entegre olan bu sistem, öğrencilerin ihtiyaç duydukları her an yanlarında olan bir dijital asistan gibi çalışır.</p>
+                        <p>Platformumuzun sunduğu özellikler sayesinde, öğrenciler artık ders notlarını kolayca çıkarabilir, karmaşık konuları görsel zihin haritalarına dönüştürebilir ve tüm içerikleri kaydedip diledikleri zaman gözden geçirebilirler. İster matematik problemi, ister fen bilgisi, ister tarih sorusu olsun – her seviyede soruyu yapay zekaya çözdürebilir ve bu çözümleri kaydederek sonradan inceleyebilirler.</p>
+                        <p>Ayrıca, uzun ya da kısa fark etmeksizin, herhangi bir PDF belgesinin özetini almak artık sadece saniyeler sürüyor. Platformumuz, bilgiyi en verimli ve anlaşılır hale getirerek öğrencilere hızlı ve etkili öğrenme deneyimi sunar.</p>
+                        <p>Bu platformla, eğitimin sınırlarını genişletiyor, bilgiyi ulaşılabilir ve anlaşılır kılıyoruz.</p>
+                        <div class="my-4 text-center">
+                          <a href="#" style="margin-top:2%;" class="btn btn-grd btn-grd-danger border-0 btn-lg px-5">Hoşgeldin, {{student}}</a>
+                        </div>
+                    </div>
+                  </div>
+          
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row row-cols-1 row-cols-lg-2 g-3">
+                          <div class="col">
+                            <div class="card shadow-none bg-grd-voilet mb-0" style="height: 160px;">
+                                <div class="card-body">
+                                <h5 class="mb-0 text-white">Not Çıkar / Zihin Haritası Oluştur</h5>
+                                <p>İlgili sayfaya ulaşmak için <a href="{% url 'note_page' %}">tıklayın.</a></p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card shadow-none bg-grd-warning mb-0" style="height: 160px;">
+                              <div class="card-body">
+                                <h5 class="mb-0 text-white">Kaydedilmiş Notları Görüntüle</h5>
+                                <p>İlgili sayfaya ulaşmak için <a href="{% url 'saved_diagrams' %}">tıklayın.</a></p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card shadow-none bg-grd-success mb-0" style="height: 160px;">
+                              <div class="card-body">
+                                <h5 class="mb-0 text-white">Soru Çözdür</h5>
+                                <p>İlgili sayfaya ulaşmak için <a href="{% url 'question_page' %}">tıklayın.</a></p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card shadow-none bg-grd-primary mb-0" style="height: 160px;">
+                              <div class="card-body">
+                                <h5 class="mb-0 text-white">Soru Geçmişini Görüntüle</h5>
+                                <p>İlgili sayfaya ulaşmak için <a href="{% url 'questions_page' %}">tıklayın.</a></p>
+
+                              </div>
+                            </div>
+                          </div>
+                         
+                          <div class="col">
+                            <div class="card shadow-none bg-grd-danger mb-0" style="height: 160px;">
+                              <div class="card-body">
+                                <h5 class="mb-0 text-white">PDF Özetle</h5>
+                                <p>İlgili sayfaya ulaşmak için <a href="{% url 'summarize_pdf' %}">tıklayın.</a></p>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card shadow-none bg-grd-deep-blue mb-0" style="height: 160px;">
+                              <div class="card-body">
+                                <h5 class="mb-0 text-white">Profil</h5>
+                                <p>İlgili sayfaya ulaşmak için <a href="{% url 'profile_page' %}">tıklayın.</a></p>
+                              </div>
+                            </div>
+                          </div>
+                          
+          
+                        </div><!--end row-->
+                      </div>
+                    </div>
+          
+                  
+          
+                        
+
+
+              <!--start overlay-->
+              <div class="overlay btn-toggle"></div>
+              <!--end overlay-->
+    
+             
+
+    </div>
+  </main>
+  <!--end main wrapper-->
+
+{% endblock main %}

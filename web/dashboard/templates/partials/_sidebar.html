@@ -1,0 +1,81 @@
+{% load static %}
+<aside class="sidebar-wrapper" data-simplebar="true">
+    <div class="sidebar-header">
+      <div class="logo-icon">
+        <img src="{% static 'images/yasinicon.png' %}" class="logo-img" alt="">
+      </div>
+      <div class="logo-name flex-grow-1">
+        <h5 class="mb-0">Öğrenci Paneli</h5>
+      </div>
+      <div class="sidebar-close">
+        <span class="material-icons-outlined">close</span>
+      </div>
+    </div>
+    <div class="sidebar-nav">
+        <!--navigation-->
+        <ul class="metismenu" id="sidenav">
+            <li>
+                <a href="{% url "homepage_view" %}">
+                  <div class="parent-icon"><i class="material-icons-outlined">home</i>
+                  </div>
+                  <div class="menu-title">Anasayfa</div>
+                </a>
+              </li>
+              <li>
+                <a href="{% url "note_page" %}">
+                  <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+                  </div>
+                  <div class="menu-title">Not Çıkar</div>
+                </a>
+              </li>
+              <li>
+                <a href="{% url "saved_diagrams" %}">
+                  <div class="parent-icon"><i class="material-icons-outlined">description</i>
+                  </div>
+                  <div class="menu-title">Kaydedilmiş Notlar</div>
+                </a>
+              </li>
+              <li>
+                <a href="{% url "question_page" %}">
+                  <div class="parent-icon"><i class="material-icons-outlined">help_outline</i>
+                  </div>
+                  <div class="menu-title">Soru Çözdür</div>
+                </a>
+              </li>
+              <li>
+                <a href="{% url "questions_page" %}">
+                  <div class="parent-icon"><i class="material-icons-outlined">toc</i>
+                  </div>
+                  <div class="menu-title">Soru Geçmişi</div>
+                </a>
+              </li>
+              <li>
+                <a href="{% url "summarize_pdf" %}">
+                  <div class="parent-icon"><i class="material-icons-outlined">api</i>
+                  </div>
+                  <div class="menu-title">PDF Özetle</div>
+                </a>
+              </li>
+
+          <li class="menu-label">Hesap Yönetimi</li>
+          <li>
+            <a href="{% url 'profile_page' %}">
+              <div class="parent-icon"><i class="material-icons-outlined">person</i>
+              </div>
+              <div class="menu-title">Profil</div>
+            </a>
+          </li>
+
+          <li>
+            <a href="{% url "logout_page" %}">
+              <div class="parent-icon"><i class="material-icons-outlined">report_problem</i>
+              </div>
+              <div class="menu-title">Çıkış Yap</div>
+            </a>
+          </li>
+          
+          
+        
+        <!--end navigation-->
+    </div>
+  </aside>

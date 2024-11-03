@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block baslik %}Kayıtlı Notlar{% endblock baslik %}
+
+{% block main %}
+<main class="main-wrapper">
+    <div class="main-content">
+		<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">BtkAkademi Anka</div>
+                        <div class="ps-3">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mb-0 p-0">
+                                    <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Kayıtlı Notlar</li>
+                                </ol>
+                            </nav>
+			            </div>
+	                </div>
+			
+
+        <div class="container flex-grow-1">
+            <div class="row">
+                {% for diagram in diagrams %}
+                <div class="col-md-6 mb-4">
+                    <div class="card rounded-4">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Diyagram Tarihi: {{ diagram.created_time}}</h5>
+                            <p>Konu: {{ diagram.prompt_text }}</p>
+                            <div class="mermaid">
+                                {{ diagram.generated_code }}
+                            </div>
+                            <form action="{% url 'delete_mermaid_history' diagram.history_id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Sil</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>Henüz kaydedilmiş bir diyagramınız yok.</p>
+                {% endfor %}
+            </div>
+        </div>
+       
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.3.0/mermaid.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        mermaid.initialize({ startOnLoad: true });
+        mermaid.run();
+    });
+</script>
+{% endblock main %}

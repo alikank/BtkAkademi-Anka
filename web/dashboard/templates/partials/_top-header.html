@@ -1,0 +1,72 @@
+{% load static %}
+
+<header class="top-header">
+    <nav class="navbar navbar-expand align-items-center gap-4">
+      <div class="btn-toggle">
+        <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
+      </div>
+      <div class="search-bar flex-grow-1">
+        <div class="position-relative">
+          
+          <div class="search-popup p-3">
+            <div class="card rounded-4 overflow-hidden">
+              <div class="card-header d-lg-none">
+                
+              </div>
+              <div class="card-body search-content">
+                <div class="d-flex align-items-start flex-wrap gap-2 kewords-wrapper">
+                 
+                </div>
+
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav gap-1 nav-right-links align-items-center">
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown"><img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Turkey_flag_300.png" width="22" alt="">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Turkey_flag_300.png" width="20" alt=""><span class="ms-2">Türkçe</span></a>
+            </li>
+            
+          </ul>
+        </li>
+  
+        
+        
+        <li class="nav-item dropdown">
+          <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
+            <div class="notify-list">
+            </div>
+          </div>
+        </li>
+       
+        <li class="nav-item dropdown">
+          <a href="javascrpt:;" class="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
+             <img src="{% static 'images/avatars/tik.jpg' %}" class="rounded-circle p-1 border" width="45" height="45" alt="">
+          </a>
+          <div class="dropdown-menu dropdown-user dropdown-menu-end shadow">
+            <a class="dropdown-item  gap-2 py-2" href="javascript:;">
+              <div class="text-center">
+                <img src="{% static 'images/avatars/tik.jpg' %}" class="rounded-circle p-1 shadow mb-3" width="90" height="90"
+                  alt="">
+                <h5 class="user-name mb-0 fw-bold">Merhaba, {{request.user.students.student_namesurname}}</h5>
+              </div>
+            </a>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{% url "profile_page" %}"><i
+              class="material-icons-outlined">person_outline</i>Profil</a>
+           
+            <hr class="dropdown-divider">
+            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{% url "logout_page" %}"><i
+            class="material-icons-outlined">power_settings_new</i>Çıkış Yap</a>
+          </div>
+        </li>
+      </ul>
+  
+    </nav>
+  </header>
