@@ -13,6 +13,14 @@ Kullanıcı dostu arayüzümüz ile öğrenciler dijital içerikleri kolayca yö
   <img src="images/anka_mobile_home.png" alt="Logo 2" width="200" height="400">
 </p>
 
+<p align="center">
+  <img src="images/anka_web_home.png" alt="Logo 1" width="800" height="600" style="margin-right: 50px;">
+</p>
+
+<p align="center">
+  <img src="images/anka_web_home_light.png" alt="Logo 1" width="800" height="600" style="margin-right: 50px;">
+</p>
+
 ## Özellikler
 - **Google Gemini AI Destekli Soru Çözümü**: Matematik, fen bilimleri, tarih gibi çeşitli alanlardaki soruları çözebilme.
 - **Görsel Zihin Haritası Oluşturma**: Karmaşık konular için görsel diyagramlar oluşturma.
